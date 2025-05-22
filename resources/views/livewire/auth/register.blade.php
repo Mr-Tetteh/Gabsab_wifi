@@ -1,62 +1,111 @@
-<div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
+<div class="sm:mx-auto sm:w-full sm:max-w-4xl w-full flex flex-row">
 
-    <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form wire:submit="register" class="flex flex-col gap-6">
-        <!-- Name -->
-        <flux:input
-            wire:model="name"
-            :label="__('Name')"
-            type="text"
-            required
-            autofocus
-            autocomplete="name"
-            :placeholder="__('Full name')"
-        />
+    <div class="flex flex-col gap-6 w-full">
+        <x-auth-header :title="__('Create an account')"
+                       :description="__('Enter your details below to create your account')"/>
 
-        <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('Email address')"
-            type="email"
-            required
-            autocomplete="email"
-            placeholder="email@example.com"
-        />
+        <!-- Session Status -->
+        <x-auth-session-status class="text-center" :status="session('status')"/>
 
-        <!-- Password -->
-        <flux:input
-            wire:model="password"
-            :label="__('Password')"
-            type="password"
-            required
-            autocomplete="new-password"
-            :placeholder="__('Password')"
-            viewable
-        />
+        <form wire:submit.prevent="register" class="flex flex-col gap-6">
+            <!-- Name Fields - Side by side -->
+            <div class="grid grid-cols-2 gap-4">
+                <flux:input
+                    wire:model="first_name"
+                    :label="__('First name')"
+                    type="text"
+                    required
+                    autofocus
+                    autocomplete="first_name"
+                    :placeholder="__('First Name')"
+                />
 
-        <!-- Confirm Password -->
-        <flux:input
-            wire:model="password_confirmation"
-            :label="__('Confirm password')"
-            type="password"
-            required
-            autocomplete="new-password"
-            :placeholder="__('Confirm password')"
-            viewable
-        />
+                <flux:input
+                    wire:model="last_name"
+                    :label="__('Last name')"
+                    type="text"
+                    required
+                    autocomplete="last_name"
+                    :placeholder="__('Last Name')"
+                />
+            </div>
 
-        <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
-                {{ __('Create account') }}
-            </flux:button>
+            <!-- Contact & Email - Side by side -->
+            <div class="grid grid-cols-2 gap-4">
+                <flux:input
+                    wire:model="email"
+                    :label="__('Email address')"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    placeholder="email@example.com"
+                />
+
+                <flux:input
+                    wire:model="contact"
+                    :label="__('Contact')"
+                    type="tel"
+                    required
+                    autocomplete="contact"
+                    :placeholder="__('Contact')"
+                />
+            </div>
+
+            <!-- Address & Gender - Side by side -->
+            <div class="grid grid-cols-2 gap-4">
+                <flux:input
+                    wire:model="address"
+                    :label="__('Address')"
+                    type="text"
+                    required
+                    autocomplete="address"
+                    :placeholder="__('Address')"
+                />
+
+                <flux:select
+                    wire:model="gender"
+                    :label="__('Gender')"
+                    placeholder="Select Gender..."
+                >
+                    <flux:select.option>Male</flux:select.option>
+                    <flux:select.option>Female</flux:select.option>
+                </flux:select>
+            </div>
+
+            <!-- Password Fields - Side by side -->
+            <div class="grid grid-cols-2 gap-4">
+                <flux:input
+                    wire:model="password"
+                    :label="__('Password')"
+                    type="password"
+                    required
+                    autocomplete="new-password"
+                    :placeholder="__('Password')"
+                    viewable
+                />
+
+                <flux:input
+                    wire:model="password_confirmation"
+                    :label="__('Confirm password')"
+                    type="password"
+                    required
+                    autocomplete="new-password"
+                    :placeholder="__('Confirm password')"
+                    viewable
+                />
+            </div>
+
+            <div class="flex items-center justify-end">
+                <flux:button type="submit" variant="primary" class="w-full">
+                    {{ __('Create account') }}
+                </flux:button>
+            </div>
+        </form>
+
+        <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
+            {{ __('Already have an account?') }}
+            <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
         </div>
-    </form>
-
-    <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
-        {{ __('Already have an account?') }}
-        <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
     </div>
 </div>

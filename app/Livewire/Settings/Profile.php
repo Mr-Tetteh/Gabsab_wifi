@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class Profile extends Component
 {
-    public string $name = '';
+    public string $first_name = '';
 
     public string $email = '';
 
@@ -19,7 +19,7 @@ class Profile extends Component
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
+        $this->first_name = Auth::user()->first_name;
         $this->email = Auth::user()->email;
     }
 
