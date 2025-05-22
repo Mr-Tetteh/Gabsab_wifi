@@ -2,13 +2,28 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Customers extends Component
 {
+    public string $first_name = '';
+    public string $last_name = '';
+
+    public string $email = '';
+    public string $contact = '';
+    public string $address = '';
+    public string $gender = '';
+
+    public string $role = '';
+
+    public string $router_id = '';
+
+    public string $password_confirmation = '';
     public function render()
     {
-        return view('livewire.admin.customers');
+        $datas = User::where('role', 'customer')->latest()->get();
+        return view('livewire.admin.customers', compact('datas'));
     }
 }
