@@ -5,9 +5,12 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', \App\Livewire\User\Homepage::class)->name('home');
+
+Route::prefix('/user')->group(function () {
+//    Route::get('/', \App\Livewire\User\Homepage::class)->name('home');
+});
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
