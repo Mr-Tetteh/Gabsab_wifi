@@ -1,5 +1,5 @@
 <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-    <p class="text-center text-2xl font-sans">List Of Customers</p>
+<p class="text-center text-2xl font-sans">Customer Crew: The Real MVPs ✨</p>
     <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg h-full">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -80,7 +80,7 @@
                         {{--                        <flux:input wire:model="router_id" label="Router_id" placeholder="router_id"/>--}}
 
                         <flux:select wire:model="role" placeholder="Choose Role...">
-                            <flux:select.option>supper_admin</flux:select.option>
+                            <flux:select.option>super_admin</flux:select.option>
                             <flux:select.option>admin</flux:select.option>
                             <flux:select.option>customer</flux:select.option>
                         </flux:select>
