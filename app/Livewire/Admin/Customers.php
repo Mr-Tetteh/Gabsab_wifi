@@ -21,6 +21,32 @@ class Customers extends Component
     public string $router_id = '';
 
     public string $password_confirmation = '';
+
+    public bool $isEdit = false;
+    public $unit_id;
+
+    public function edit($id)
+    {
+        $this->isEdit = true;
+        $user = User::findOrFail($id);
+        $this->unit_id = $user->id;
+        $this->first_name = $user->first_name;
+        $this->role = $user->role;
+//        $this->router_id = $user->router_id;
+
+    }
+
+    public function update()
+    {
+        $user = User::findorFail($this->unit_id);
+        $user->update([
+            'role' => $this->role
+        ]);
+        session()->flash('message', 'User updated successfully.');
+
+
+    }
+
     public function render()
     {
         $datas = User::where('role', 'customer')->latest()->get();

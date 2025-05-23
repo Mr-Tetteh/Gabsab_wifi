@@ -1,5 +1,5 @@
 <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-<p class="text-center text-2xl font-sans">List Of Customers</p>
+    <p class="text-center text-2xl font-sans">List Of Customers</p>
     <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg h-full">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -54,12 +54,43 @@
                         </td>
                         <td class="px-6 py-4">
                             <div class="flex gap-2">
-                                <button class="font-medium text-blue-600 hover:underline">Edit</button>
+                                <flux:modal.trigger name="edit-profile">
+                                    <flux:button wire:click="edit({{$data->id}})">Edit Role</flux:button>
+                                </flux:modal.trigger>
+
                                 <button class="font-medium text-red-600 hover:underline">Delete</button>
                             </div>
                         </td>
                     </tr>
                 @endforeach
+                <flux:modal name="edit-profile" class="md:w-96">
+                    @if (session()->has('message'))
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                    <form  wire:submit.prevent="update">
+
+                    <div class="space-y-6">
+                        <div>
+                            <flux:heading size="lg">Update profile</flux:heading>
+                            <flux:text class="mt-2">Make changes to details.</flux:text>
+                        </div>
+                        <flux:input wire:model="first_name" label="First Name" placeholder="First Name"/>
+                        {{--                        <flux:input wire:model="router_id" label="Router_id" placeholder="router_id"/>--}}
+
+                        <flux:select wire:model="role" placeholder="Choose Role...">
+                            <flux:select.option>supper_admin</flux:select.option>
+                            <flux:select.option>admin</flux:select.option>
+                            <flux:select.option>customer</flux:select.option>
+                        </flux:select>
+                        <div class="flex">
+                            <flux:spacer/>
+                            <flux:button type="submit" variant="primary">Save changes</flux:button>
+                        </div>
+                    </div>
+                    </form>
+                </flux:modal>
                 </tbody>
             </table>
         </div>
