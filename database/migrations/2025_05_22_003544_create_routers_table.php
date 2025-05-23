@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('mac_address');
             $table->string('antenna_number');
-            $table->string('ip_address');
             $table->string('serial_number');
             $table->string('model');
             $table->boolean('status')->default(false);
