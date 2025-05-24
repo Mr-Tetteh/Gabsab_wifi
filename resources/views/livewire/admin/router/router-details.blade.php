@@ -83,24 +83,37 @@
                 </div>
 
                 @if($Edit)
-                <div>
-                    <label for="antenna_number" class="block text-sm font-medium text-gray-700 mb-1">Status
-                        </label>
-                    <select
-                        id="status"
-                        wire:model="status"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none
-                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    >
-                        <option value="0">Inactive</option>
-                        <option value="1">Active</option>
-                    </select>
-                    @error('status')
-                    <div class="text-red-600">
-                        {{$message}}
+                    <div>
+                        <label for="antenna_number" class="block text-sm font-medium text-gray-700 mb-1">User
+                            unique_id</label>
+                        <input
+                            id="antenna_number"
+                            wire:model="unique_id"
+                            type="text"
+                            placeholder="Enter antenna count"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                        >
                     </div>
-                    @enderror
-                </div>
+
+                    <div>
+                        <label for="antenna_number" class="block text-sm font-medium text-gray-700 mb-1">Status
+                        </label>
+                        <select
+                            id="status"
+                            wire:model="status"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none
+                        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                        >
+                            <option value="0">Inactive</option>
+                            <option value="1">Active</option>
+                        </select>
+                        @error('status')
+                        <div class="text-red-600">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+
                 @endif
 
                 <button
@@ -136,6 +149,9 @@
                             Antennas
                         </th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            User
+                        </th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Status
                         </th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -159,6 +175,14 @@
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
                                 {{$router->antenna_number}}
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                                @if($router->user)
+                                    Name: {{$router->user->first_name}} {{$router->user->last_name}} <br>
+                                    Contact: {{$router->user->contact}}
+                                @else
+                                    N/A
+                                @endif
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
                                 @if($router->status === 0)

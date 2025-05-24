@@ -15,6 +15,7 @@ class RouterDetails extends Component
     public $status;
     public $Edit = false;
     public $unit_id;
+    public $unique_id;
 
     public function resetForm()
     {
@@ -23,6 +24,7 @@ class RouterDetails extends Component
         $this->antenna_number = '';
         $this->status = '';
         $this->model = '';
+        $this->unique_id = '';
     }
 
     protected $rules = [
@@ -42,6 +44,7 @@ class RouterDetails extends Component
         $this->model = $router->model;
         $this->status = $router->status;
         $this->Edit = true;
+        $this->unique_id = $router->unique_id;
     }
 
     public function update()
@@ -52,6 +55,7 @@ class RouterDetails extends Component
             'antenna_number' => $this->antenna_number,
             'model' => $this->model,
             'status' => $this->status,
+            'unique_id' => $this->unique_id
         ]);
 
         session()->flash('message', 'Router updated successfully.');

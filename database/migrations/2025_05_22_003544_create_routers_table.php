@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('routers', function (Blueprint $table) {
             $table->id();
+            $table->string('unique_id')->nullable();
             $table->string('mac_address');
             $table->string('antenna_number');
             $table->string('serial_number');

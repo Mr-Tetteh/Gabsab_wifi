@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@php use Illuminate\Support\Facades\Auth; @endphp
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 <head>
     @include('partials.head')
@@ -11,6 +12,15 @@
         <x-app-logo/>
     </a>
 
+    <div class="flex flex-col gap-2">
+        <div>
+            Your Unique ID:
+        </div>
+        <div>
+            {{Auth::user()->unique_id}}
+        </div>
+    </div>
+    <br>
     <flux:navlist variant="outline">
         <flux:navlist.group :heading="__('Platform')" class="grid">
             <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')"
@@ -27,7 +37,8 @@
             <flux:navlist.item icon="user" :href="route('admin.users')" :current="request()->routeIs('admin.users')"
                                wire:navigate>{{ __('Users') }}</flux:navlist.item>
 
-            <flux:navlist.item icon="users" :href="route('admin.customers')" :current="request()->routeIs('admin.customers')"
+            <flux:navlist.item icon="users" :href="route('admin.customers')"
+                               :current="request()->routeIs('admin.customers')"
                                wire:navigate>{{ __('Customers') }}</flux:navlist.item>
 
         </flux:navlist.group>
