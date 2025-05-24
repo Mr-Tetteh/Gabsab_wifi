@@ -1,10 +1,13 @@
 <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-<p class="text-center text-2xl font-sans">Customer Crew: The Real MVPs ✨</p>
+    <p class="text-center text-2xl font-sans">Customer Crew: The Real MVPs ✨</p>
     <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg h-full">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
+                    <th scope="col" class="px-6 py-4">
+                        Unique ID
+                    </th>
                     <th scope="col" class="px-6 py-4">
                         Full Name
                     </th>
@@ -16,6 +19,9 @@
                     </th>
                     <th scope="col" class="px-6 py-4">
                         Address
+                    </th>
+                    <th scope="col" class="px-6 py-4">
+                        Router(s)
                     </th>
                     <th scope="col" class="px-6 py-4">
                         Gender
@@ -31,6 +37,9 @@
                 <tbody>
                 @foreach($datas as $data)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4">
+                            {{ $data->unique_id }}
+                        </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $data->first_name }} {{ $data->last_name }}
                         </td>
@@ -42,6 +51,22 @@
                         </td>
                         <td class="px-6 py-4">
                             {{$data->address}}
+                        </td>
+                        <td class="px-6 py-4">
+                            @if($data->routers->isEmpty())
+                                <div class="text-red-500">No routers assigned</div>
+                            @else
+                                @foreach($data->routers as $router)
+                                    <div><span class="font-bold">Model: </span> {{ $router->model }}</div>
+                                    <div><span class="font-bold">Mac Address: </span> {{ $router->mac_address }}</div>
+                                    <div><span class="font-bold">Serial Number: </span> {{ $router->serial_number }}
+                                    </div>
+                                    <div><span class="font-bold">Antenna Number: </span> {{ $router->antenna_number }}
+                                    </div>
+
+                                    <br>
+                                @endforeach
+                            @endif
                         </td>
                         <td class="px-6 py-4">
                                 <span
@@ -69,26 +94,26 @@
                             {{ session('message') }}
                         </div>
                     @endif
-                    <form  wire:submit.prevent="update">
+                    <form wire:submit.prevent="update">
 
-                    <div class="space-y-6">
-                        <div>
-                            <flux:heading size="lg">Update profile</flux:heading>
-                            <flux:text class="mt-2">Make changes to details.</flux:text>
-                        </div>
-                        <flux:input wire:model="first_name" label="First Name" placeholder="First Name"/>
-                        {{--                        <flux:input wire:model="router_id" label="Router_id" placeholder="router_id"/>--}}
+                        <div class="space-y-6">
+                            <div>
+                                <flux:heading size="lg">Update profile</flux:heading>
+                                <flux:text class="mt-2">Make changes to details.</flux:text>
+                            </div>
+                            <flux:input wire:model="first_name" label="First Name" placeholder="First Name"/>
+                            {{--                        <flux:input wire:model="router_id" label="Router_id" placeholder="router_id"/>--}}
 
-                        <flux:select wire:model="role" placeholder="Choose Role...">
-                            <flux:select.option>super_admin</flux:select.option>
-                            <flux:select.option>admin</flux:select.option>
-                            <flux:select.option>customer</flux:select.option>
-                        </flux:select>
-                        <div class="flex">
-                            <flux:spacer/>
-                            <flux:button type="submit" variant="primary">Save changes</flux:button>
+                            <flux:select wire:model="role" placeholder="Choose Role...">
+                                <flux:select.option>super_admin</flux:select.option>
+                                <flux:select.option>admin</flux:select.option>
+                                <flux:select.option>customer</flux:select.option>
+                            </flux:select>
+                            <div class="flex">
+                                <flux:spacer/>
+                                <flux:button type="submit" variant="primary">Save changes</flux:button>
+                            </div>
                         </div>
-                    </div>
                     </form>
                 </flux:modal>
                 </tbody>

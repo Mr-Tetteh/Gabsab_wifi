@@ -100,6 +100,6 @@ class User extends Authenticatable
 
     public function routers(): HasMany
     {
-        return $this->hasMany(Router::class);
+        return $this->hasMany(Router::class, 'unique_id', 'unique_id');
     }
 }

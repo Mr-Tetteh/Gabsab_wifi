@@ -7,6 +7,9 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-4">
+                        Unique ID
+                    </th>
+                    <th scope="col" class="px-6 py-4">
                         Full Name
                     </th>
                     <th scope="col" class="px-6 py-4">
@@ -15,8 +18,12 @@
                     <th scope="col" class="px-6 py-4">
                         Contact Number
                     </th>
+
                     <th scope="col" class="px-6 py-4">
                         Address
+                    </th>
+                    <th scope="col" class="px-6 py-4">
+                        Router(s)
                     </th>
                     <th scope="col" class="px-6 py-4">
                         Gender
@@ -38,6 +45,9 @@
                 @foreach($datas as $data)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $data->unique_id }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $data->first_name }} {{ $data->last_name }}
                         </td>
                         <td class="px-6 py-4">
@@ -50,8 +60,24 @@
                             {{$data->address}}
                         </td>
                         <td class="px-6 py-4">
+                            @if($data->routers->isEmpty())
+                                <div class="text-red-500">No routers assigned</div>
+                            @else
+                                @foreach($data->routers as $router)
+                                    <div><span class="font-bold">Model: </span> {{ $router->model }}</div>
+                                    <div><span class="font-bold">Mac Address: </span> {{ $router->mac_address }}</div>
+                                    <div><span class="font-bold">Serial Number: </span> {{ $router->serial_number }}
+                                    </div>
+                                    <div><span class="font-bold">Antenna Number: </span> {{ $router->antenna_number }}
+                                    </div>
+                                    <br>
+                                @endforeach
+                            @endif
+                        </td>
+                        <td class="px-6 py-4">
                                 <span
-                                    class="px-2 py-1 font-semibold leading-tight rounded-full {{ $data->gender === 'male' ? 'text-blue-700 bg-blue-100' : 'text-pink-700 bg-pink-100' }}">
+                                    class="px-2 py-1 font-semibold leading-tight rounded-full
+                                    {{ $data->gender === 'male' ? 'text-blue-700 bg-blue-100' : 'text-pink-700 bg-pink-100' }}">
                                     {{$data->gender}}
                                 </span>
                         </td>
