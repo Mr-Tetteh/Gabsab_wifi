@@ -115,7 +115,6 @@
                                 <flux:text class="mt-2">Make changes to details.</flux:text>
                             </div>
                             <flux:input wire:model="first_name" label="First Name" placeholder="First Name"/>
-                            {{--                        <flux:input wire:model="router_id" label="Router_id" placeholder="router_id"/>--}}
 
                             <flux:select wire:model="role" placeholder="Choose Role...">
                                 <flux:select.option>super_admin</flux:select.option>
