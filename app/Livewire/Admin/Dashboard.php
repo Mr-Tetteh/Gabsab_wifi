@@ -16,8 +16,6 @@ class Dashboard extends Component
         $routers = Router::count();
         $active_routers = Router::where('status', true)->count();
 
-
-
         return view('livewire.admin.dashboard', compact('admin', 'customers', 'today_customers', 'routers', 'active_routers'));
     }
 }

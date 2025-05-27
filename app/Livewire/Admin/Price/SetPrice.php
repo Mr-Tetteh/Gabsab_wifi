@@ -8,15 +8,25 @@ use Livewire\Component;
 class SetPrice extends Component
 {
     public $name;
+
     public $price;
+
     public $quantity;
+
     public $adv_1;
+
     public $adv_2;
+
     public $adv_3;
+
     public $adv_4;
+
     public $adv_5;
+
     public $unit_id;
+
     public $modal = false;
+
     public $Edit = false;
 
     protected $rules = [
@@ -104,6 +114,7 @@ class SetPrice extends Component
     public function render()
     {
         $datas = Price::latest()->get();
+
         return view('livewire.admin.price.set-price', compact('datas'));
     }
 }

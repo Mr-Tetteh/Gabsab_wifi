@@ -8,16 +8,25 @@ use Livewire\Component;
 class RouterDetails extends Component
 {
     public $id;
+
     public $model;
+
     public $mac_address;
+
     public $serial_number;
+
     public $antenna_number;
+
     public $status;
+
     public $created_at;
 
     public $Edit = false;
+
     public $unit_id;
+
     public $unique_id;
+
     public $modal = false;
 
     public function resetForm()
@@ -69,6 +78,7 @@ class RouterDetails extends Component
         $this->modal = false;
         $this->resetForm();
     }
+
     public function update()
     {
         Router::find($this->unit_id)->update([
@@ -77,7 +87,7 @@ class RouterDetails extends Component
             'antenna_number' => $this->antenna_number,
             'model' => $this->model,
             'status' => $this->status,
-            'unique_id' => $this->unique_id
+            'unique_id' => $this->unique_id,
         ]);
 
         session()->flash('message', 'Router updated successfully.');
@@ -104,9 +114,11 @@ class RouterDetails extends Component
         Router::find($id)->delete();
         session()->flash('message', 'Router deleted successfully.');
     }
+
     public function render()
     {
         $routers = \App\Models\Router::all();
+
         return view('livewire.admin.router.router-details', compact('routers'));
     }
 }

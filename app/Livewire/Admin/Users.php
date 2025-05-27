@@ -3,17 +3,20 @@
 namespace App\Livewire\Admin;
 
 use App\Models\User;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Users extends Component
 {
     public string $first_name = '';
+
     public string $last_name = '';
 
     public string $email = '';
+
     public string $contact = '';
+
     public string $address = '';
+
     public string $gender = '';
 
     public string $role = '';
@@ -22,8 +25,8 @@ class Users extends Component
 
     public string $password_confirmation = '';
 
-
     public bool $isEdit = false;
+
     public $unit_id;
 
     public function edit($id)
@@ -33,7 +36,7 @@ class Users extends Component
         $this->unit_id = $user->id;
         $this->first_name = $user->first_name;
         $this->role = $user->role;
-//        $this->router_id = $user->router_id;
+        //        $this->router_id = $user->router_id;
 
     }
 
@@ -41,16 +44,16 @@ class Users extends Component
     {
         $user = User::findorFail($this->unit_id);
         $user->update([
-            'role' => $this->role
+            'role' => $this->role,
         ]);
         session()->flash('message', 'User updated successfully.');
-
 
     }
 
     public function render()
     {
         $datas = User::where('role', 'admin')->orWhere('role', 'super_admin')->latest()->get();
+
         return view('livewire.admin.users', compact('datas'));
     }
 }

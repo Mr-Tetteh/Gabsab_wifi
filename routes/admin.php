@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Livewire\Admin\Customers;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Price\SetPrice;

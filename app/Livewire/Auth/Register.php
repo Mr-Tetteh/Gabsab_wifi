@@ -14,11 +14,15 @@ use Livewire\Component;
 class Register extends Component
 {
     public string $first_name = '';
+
     public string $last_name = '';
 
     public string $email = '';
+
     public string $contact = '';
+
     public string $address = '';
+
     public string $gender = '';
 
     public string $password = '';
@@ -36,12 +40,11 @@ class Register extends Component
     {
         $validated = $this->validate([
             'first_name' => ['required', 'string', 'max:255'], 'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'contact' => ['required', 'digits:10', 'max:10', 'unique:' . User::class . ',contact'], 'address' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'contact' => ['required', 'digits:10', 'max:10', 'unique:'.User::class.',contact'], 'address' => ['required', 'string', 'max:255'],
             'gender' => ['required', 'string', 'in:Male,Female,other'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
-
 
         $validated['password'] = Hash::make($validated['password']);
 

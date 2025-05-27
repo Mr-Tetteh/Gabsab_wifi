@@ -8,14 +8,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', \App\Livewire\User\Homepage::class)->name('home');
 
 Route::prefix('/user')->group(function () {
-//    Route::get('/', \App\Livewire\User\Homepage::class)->name('home');
+    //    Route::get('/', \App\Livewire\User\Homepage::class)->name('home');
 });
-
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

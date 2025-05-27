@@ -3,14 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Cviebrock\EloquentSluggable\Sluggable;
-
 
 class User extends Authenticatable
 {
@@ -21,10 +19,11 @@ class User extends Authenticatable
     {
         return [
             'unique_id' => [
-                'source' => 'unique_id'
-            ]
+                'source' => 'unique_id',
+            ],
         ];
     }
+
     protected static function booted()
     {
         static::creating(function ($user): void {
@@ -63,7 +62,6 @@ class User extends Authenticatable
         'gender', 'role', 'unique_id', 'address', 'password',
     ];
 
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -94,7 +92,7 @@ class User extends Authenticatable
     {
         return Str::of($this->name)
             ->explode(' ')
-            ->map(fn(string $name) => Str::of($name)->substr(0, 1))
+            ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
 
