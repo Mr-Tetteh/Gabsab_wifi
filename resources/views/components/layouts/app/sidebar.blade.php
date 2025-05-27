@@ -23,10 +23,14 @@
     <br>
     <flux:navlist variant="outline">
         <flux:navlist.group :heading="__('Platform')" class="grid">
-            <flux:navlist.item icon="home" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')"
+            <flux:navlist.item icon="home" :href="route('admin.dashboard')"
+                               :current="request()->routeIs('admin.dashboard')"
                                wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
             <flux:navlist.item icon="wifi" :href="route('admin.router')" :current="request()->routeIs('admin.router')"
                                wire:navigate>{{ __('Routers') }}</flux:navlist.item>
+            <flux:navlist.item icon="currency-dollar" :href="route('admin.price')"
+                               :current="request()->routeIs(' admin.price')"
+                               wire:navigate>{{ __('Set Price') }}</flux:navlist.item>
 
 
         </flux:navlist.group>
