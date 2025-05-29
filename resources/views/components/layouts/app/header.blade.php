@@ -5,8 +5,10 @@
     @include('partials.head')
 </head>
 <body class="min-h-screen bg-white dark:bg-zinc-800">
+
 <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
     <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left"/>
+
 
     @if(Auth::user())
         <a href="{{ route('admin.dashboard') }}"
@@ -20,8 +22,12 @@
             <x-app-logo/>
         </a>
     @endif
+    <flux:spacer/>
+    <flux:spacer/>
 
-    @if(Auth::user())
+
+
+@if(Auth::user())
         <flux:navbar class="-mb-px max-lg:hidden">
             <flux:navbar.item icon="layout-grid" :href="route('admin.dashboard')"
                               :current="request()->routeIs('admin.dashboard')"
@@ -32,23 +38,31 @@
     @endif
     <flux:navbar class="-mb-px max-lg:hidden">
         @if(!Auth::user())
-            <flux:navbar.item icon="layout-grid" :href="route('login')" :current="request()->routeIs('login')"
+            <flux:navbar.item icon="arrow-left-end-on-rectangle" :href="route('login')"
+                              :current="request()->routeIs('login')"
                               wire:navigate>
                 {{ __('Login') }}
+            </flux:navbar.item>
+        @endif
+    </flux:navbar>
+    <flux:navbar class="-mb-px max-lg:hidden">
+        @if(!Auth::user())
+            <flux:navbar.item icon="arrow-right-start-on-rectangle" :href="route('register')"
+                              :current="request()->routeIs('register')"
+                              wire:navigate>
+                {{ __('Register') }}
             </flux:navbar.item>
         @endif
     </flux:navbar>
     <flux:spacer/>
 
     @if(Auth::user())
-
         <!-- Desktop User Menu -->
         <flux:dropdown position="top" align="end">
             <flux:profile
                 class="cursor-pointer"
                 :initials="auth()->user()->initials()"
             />
-
             <flux:menu>
                 <flux:menu.radio.group>
                     <div class="p-0 text-sm font-normal">
@@ -89,6 +103,7 @@
     @endif
 </flux:header>
 
+
 <!-- Mobile Menu -->
 <flux:sidebar stashable sticky
               class="lg:hidden border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
@@ -108,7 +123,9 @@
                 </flux:navlist.item>
             </flux:navlist.group>
         @endif
-        <flux:navlist.group :heading="__('Platform')">
+            @if(!Auth::user())
+
+            <flux:navlist.group :heading="__('Platform')">
             <flux:navlist.item icon="arrow-left-end-on-rectangle" :href="route('login')"
                                :current="request()->routeIs('login')" wire:navigate>
                 {{ __('Login') }}
@@ -118,10 +135,26 @@
                 {{ __('Register') }}
             </flux:navlist.item>
         </flux:navlist.group>
+            @endif
 
     </flux:navlist>
 
     <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+    <flux:spacer/>
+
+
+
 
 
 </flux:sidebar>

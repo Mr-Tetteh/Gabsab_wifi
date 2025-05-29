@@ -35,10 +35,8 @@
             <flux:navlist.item icon="wifi" :href="route('admin.router')" :current="request()->routeIs('admin.router')"
                                wire:navigate>{{ __('Routers') }}</flux:navlist.item>
             <flux:navlist.item icon="currency-dollar" :href="route('admin.price')"
-                               :current="request()->routeIs(' admin.price')"
+                               :current="request()->routeIs('admin.price')"
                                wire:navigate>{{ __('Set Price') }}</flux:navlist.item>
-
-
         </flux:navlist.group>
     </flux:navlist>
 

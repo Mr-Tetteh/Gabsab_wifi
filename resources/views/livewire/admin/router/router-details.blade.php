@@ -233,9 +233,9 @@
                                     </div>
 
                                     <!-- Content -->
-                                    <div class="px-6 py-4">
-                                        <div class="overflow-hidden rounded-lg border border-gray-200">
-                                            <table class="min-w-full divide-y divide-gray-200">
+                                    <div class="px-6 py-4 overflow-x-auto">
+                                        <div class=" rounded-lg border border-gray-200">
+                                            <table class="min-w-full divide-y divide-gray-200 scroll-auto">
                                                 <thead class="bg-gray-50">
                                                 <tr>
                                                     <th class="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
@@ -319,6 +319,5 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
