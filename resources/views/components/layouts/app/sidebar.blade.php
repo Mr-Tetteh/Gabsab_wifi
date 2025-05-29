@@ -27,6 +27,8 @@
         </div>
     </div>
     <br>
+    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
+
     <flux:navlist variant="outline">
         <flux:navlist.group :heading="__('Platform')" class="grid">
             <flux:navlist.item icon="home" :href="route('admin.dashboard')"
@@ -51,6 +53,18 @@
 
         </flux:navlist.group>
     </flux:navlist>
+    @endif
+    <flux:navlist variant="outline">
+        <flux:navlist.group :heading="__('Panel')" class="grid">
+            <flux:navlist.item icon="home" :href="route('customer.dashboard')"
+                               :current="request()->routeIs('customer.dashboard')"
+                               wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+            <flux:navlist.item icon="wifi" :href="route('customer.routers')" :current="request()->routeIs('customer.routers')"
+                               wire:navigate>{{ __('Routers') }}</flux:navlist.item>
+
+        </flux:navlist.group>
+    </flux:navlist>
+
 
     <flux:navlist variant="outline">
         <flux:navlist.group :heading="__('UX')" class="grid">
