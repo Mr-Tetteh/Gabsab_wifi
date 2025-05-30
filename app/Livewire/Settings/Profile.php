@@ -11,6 +11,9 @@ use Livewire\Component;
 class Profile extends Component
 {
     public string $first_name = '';
+    public $last_name = '';
+    public $contact = '';
+    public $address = '';
 
     public string $email = '';
 
@@ -20,6 +23,9 @@ class Profile extends Component
     public function mount(): void
     {
         $this->first_name = Auth::user()->first_name;
+        $this->last_name = Auth::user()->last_name;
+        $this->contact = Auth::user()->contact;
+        $this->address = Auth::user()->address;
         $this->email = Auth::user()->email;
     }
 
@@ -31,8 +37,8 @@ class Profile extends Component
         $user = Auth::user();
 
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
-
+            'first_name' => ['required', 'string', 'max:255'], 'last_name' => ['required', 'string', 'max:255'],
+            'contact' => ['required', 'digits:10', 'max:10', Rule::unique(User::class)->ignore($user->id)], 'address' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -52,6 +58,8 @@ class Profile extends Component
         $user->save();
 
         $this->dispatch('profile-updated', name: $user->name);
+        session()->flash('message', 'Profile updated successfully.');
+
     }
 
     /**

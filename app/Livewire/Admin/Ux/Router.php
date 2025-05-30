@@ -48,9 +48,7 @@ class Router extends Component
 
     public function render()
     {
-        $routers = \App\Models\Router::where('unique_id', Auth::user()->unique_id)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $routers = \App\Models\Router::where('unique_id', Auth::user()->unique_id)->get();
         return view('livewire.admin.ux.router', compact('routers'));
     }
 }

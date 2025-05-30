@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\DashboardLink;
 
 use App\Models\Router;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ActiveRouters extends Component
@@ -48,7 +49,7 @@ class ActiveRouters extends Component
 
     public function render()
     {
-        $routers = Router::where('status', 1)->get();
+        $routers = Router::where('status', 1)->where('unique_id', Auth::user()->unique_id)->get();
         return view('livewire.admin.dashboard-link.active-routers', compact('routers'));
     }
 }

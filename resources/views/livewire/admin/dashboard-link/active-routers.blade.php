@@ -1,8 +1,8 @@
 <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg h-full">
-            <div class="mb-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">Router Inventory</h2>
-                <p class="text-gray-600">Current routers in the system</p>
+            <div class="mb-6 text-center">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">ActiveRouters</h2>
+                <p class="text-gray-600">Your current active routers</p>
             </div>
 
             <div class="overflow-x-auto">
