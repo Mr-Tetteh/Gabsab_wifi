@@ -61,6 +61,8 @@
                                wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
             <flux:navlist.item icon="wifi" :href="route('customer.routers')" :current="request()->routeIs('customer.routers')"
                                wire:navigate>{{ __('Routers') }}</flux:navlist.item>
+            <flux:navlist.item icon="credit-card" :href="route('customer.subscriptions')" :current="request()->routeIs('customer.subscriptions')"
+                               wire:navigate>{{ __('Subscribe') }}</flux:navlist.item>
 
         </flux:navlist.group>
     </flux:navlist>

@@ -56,6 +56,7 @@ class Register extends Component
             'contact' => ['required', 'digits:10', 'max:10', 'unique:'.User::class.',contact'], 'address' => ['required', 'string', 'max:255'],
             'gender' => ['required', 'string', 'in:Male,Female,other'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'terms' =>['required']
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
