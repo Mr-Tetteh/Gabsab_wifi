@@ -30,8 +30,20 @@ class Register extends Component
     public string $role = '';
 
     public string $router_id = '';
+    public $terms;
 
     public string $password_confirmation = '';
+
+    public $modal = false;
+
+    public function openModal()
+    {
+        $this->modal = true;
+    }
+    public function closeModal()
+    {
+        $this->modal = false;
+    }
 
     /**
      * Handle an incoming registration request.
