@@ -50,11 +50,13 @@ class Subscribe extends Component
             'unique_id' => Auth::user()->unique_id,
             'serial_number' => $this->serial_number,
             'amount' => $this->amount,
-            'contact' => $this->contact,
+            'contact' =>'233'.substr($this->contact, -9),
             'subscription_date' => now(),
             'expiry_date' => now()->addMonth(),
         ]);
 
+        sendWithSMSONLINEGH('233'.substr($this->contact, -9),
+                'Yo! Your subscription on router with serial number '. $this->serial_number.' is good to go! Stay connected & happy browsing! Best regards,  GABSAB Team.');
         session()->flash('message', 'Subscription created successfully.');
         $this->resetFrom();
         return redirect()->route('customer.subscriptions');

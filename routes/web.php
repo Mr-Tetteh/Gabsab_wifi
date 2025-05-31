@@ -23,6 +23,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 });
 
+//Route::get('/sms', function () {
+//    return sendWithSMSONLINEGH('233559724772', 'hello GABSAB Wifi', sender: 'GABSAB');
+//});
+
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/customer.php';
