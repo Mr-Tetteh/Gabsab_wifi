@@ -23,9 +23,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 });
 
-//Route::get('/sms', function () {
-//    return sendWithSMSONLINEGH('233559724772', 'hello GABSAB Wifi', sender: 'GABSAB');
-//});
+Route::get('/sms', function () {
+    return sendWithSMSONLINEGH('233559724772', 'hello Care Wifi', sender: 'Care Sync');
+});
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
