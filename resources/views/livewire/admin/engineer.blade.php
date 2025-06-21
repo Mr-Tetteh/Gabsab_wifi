@@ -1,5 +1,5 @@
 <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-    <p class="text-center text-2xl font-sans">Customer Crew: The Real MVPs ✨</p>
+    <p class="text-center text-2xl font-sans">Engineer Crew: The Real MVPs ✨</p>
 
     <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg h-full">

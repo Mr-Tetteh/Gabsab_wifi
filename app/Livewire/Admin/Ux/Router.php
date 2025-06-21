@@ -8,6 +8,7 @@ use Livewire\Component;
 class Router extends Component
 {
     public $modal = false;
+
     public $id;
 
     public $model;
@@ -27,6 +28,7 @@ class Router extends Component
     public $unit_id;
 
     public $unique_id;
+
     public function details_view($id)
     {
         $this->modal = true;
@@ -49,6 +51,7 @@ class Router extends Component
     public function render()
     {
         $routers = \App\Models\Router::where('unique_id', Auth::user()->unique_id)->get();
+
         return view('livewire.admin.ux.router', compact('routers'));
     }
 }

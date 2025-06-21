@@ -11,12 +11,19 @@ use Livewire\Component;
 class Subscribe extends Component
 {
     public $id;
+
     public $unique_id;
+
     public $serial_number;
+
     public $amount;
+
     public $contact;
+
     public $status;
+
     public $subscription_date;
+
     public $expiry_date;
 
     public function mount()
@@ -29,7 +36,6 @@ class Subscribe extends Component
     protected $rules = [
         'contact' => 'required',
     ];
-
 
     public function resetFrom()
     {
@@ -50,17 +56,17 @@ class Subscribe extends Component
             'unique_id' => Auth::user()->unique_id,
             'serial_number' => $this->serial_number,
             'amount' => $this->amount,
-            'contact' =>'233'.substr($this->contact, -9),
+            'contact' => '233'.substr($this->contact, -9),
             'subscription_date' => now(),
             'expiry_date' => now()->addMonth(),
         ]);
 
         sendWithSMSONLINEGH('233'.substr($this->contact, -9),
-                'Yo! Your subscription on router with serial number '. $this->serial_number.' is good to go! Stay connected & happy browsing! Best regards,  GABSAB Team.');
+            'Yo! Your subscription on router with serial number '.$this->serial_number.' is good to go! Stay connected & happy browsing! Best regards,  GABSAB Team.');
         session()->flash('message', 'Subscription created successfully.');
         $this->resetFrom();
-        return redirect()->route('customer.subscriptions');
 
+        return redirect()->route('customer.subscriptions');
 
     }
 
@@ -69,6 +75,7 @@ class Subscribe extends Component
         $datas = Subscription::where('unique_id', Auth::user()->unique_id)->get();
         $routers = Router::where('unique_id', Auth::user()->unique_id)->get();
         $prices = Price::all();
+
         return view('livewire.admin.subscription.subscribe', compact('datas', 'routers', 'prices'));
     }
 }

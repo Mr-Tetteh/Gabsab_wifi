@@ -11,7 +11,7 @@ Route::prefix('/user')->group(function () {
     //    Route::get('/', \App\Livewire\User\Homepage::class)->name('home');
 });
 
-//Route::view('dashboard', 'dashboard')
+// Route::view('dashboard', 'dashboard')
 //    ->middleware(['auth', 'verified'])
 //    ->name('dashboard');
 

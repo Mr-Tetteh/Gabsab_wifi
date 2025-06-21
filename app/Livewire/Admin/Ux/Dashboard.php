@@ -16,6 +16,7 @@ class Dashboard extends Component
         $today_customers = User::where('role', 'customer')->whereDate('created_at', today())->count();
         $routers = Router::where('unique_id', Auth::user()->unique_id)->count();
         $active_routers = Router::where('status', true)->where('unique_id', Auth::user()->unique_id)->count();
-        return view('livewire.admin.ux.dashboard',  compact('admin', 'customers', 'today_customers', 'routers', 'active_routers'));
+
+        return view('livewire.admin.ux.dashboard', compact('admin', 'customers', 'today_customers', 'routers', 'active_routers'));
     }
 }

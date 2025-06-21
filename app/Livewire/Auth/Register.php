@@ -30,6 +30,7 @@ class Register extends Component
     public string $role = '';
 
     public string $router_id = '';
+
     public $terms;
 
     public string $password_confirmation = '';
@@ -40,6 +41,7 @@ class Register extends Component
     {
         $this->modal = true;
     }
+
     public function closeModal()
     {
         $this->modal = false;
@@ -56,7 +58,7 @@ class Register extends Component
             'contact' => ['required', 'digits:10', 'max:10', 'unique:'.User::class.',contact'], 'address' => ['required', 'string', 'max:255'],
             'gender' => ['required', 'string', 'in:Male,Female,other'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
-            'terms' =>['required']
+            'terms' => ['required'],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);

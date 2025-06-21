@@ -9,6 +9,7 @@ use Livewire\Component;
 class ActiveRouters extends Component
 {
     public $modal = false;
+
     public $id;
 
     public $model;
@@ -28,6 +29,7 @@ class ActiveRouters extends Component
     public $unit_id;
 
     public $unique_id;
+
     public function details_view($id)
     {
         $this->modal = true;
@@ -50,6 +52,7 @@ class ActiveRouters extends Component
     public function render()
     {
         $routers = Router::where('status', 1)->where('unique_id', Auth::user()->unique_id)->get();
+
         return view('livewire.admin.dashboard-link.active-routers', compact('routers'));
     }
 }

@@ -11,8 +11,11 @@ use Livewire\Component;
 class Profile extends Component
 {
     public string $first_name = '';
+
     public $last_name = '';
+
     public $contact = '';
+
     public $address = '';
 
     public string $email = '';

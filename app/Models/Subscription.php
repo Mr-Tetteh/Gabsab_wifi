@@ -15,6 +15,4 @@ class Subscription extends Model
         'subscription_date',
         'expiry_date',
     ];
-
-
 }

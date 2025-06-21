@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\EnsureIsCustomer;
 use App\Livewire\Admin\Subscription\Subscribe;
 use App\Livewire\Admin\Ux\Dashboard;
 use App\Livewire\Admin\Ux\Router;

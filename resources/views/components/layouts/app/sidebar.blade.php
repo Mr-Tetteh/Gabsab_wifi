@@ -39,6 +39,10 @@
             <flux:navlist.item icon="currency-dollar" :href="route('admin.price')"
                                :current="request()->routeIs('admin.price')"
                                wire:navigate>{{ __('Set Price') }}</flux:navlist.item>
+
+            <flux:navlist.item icon="pencil" :href="route('admin.customer_issues')"
+                               :current="request()->routeIs('admin.customer_issues')"
+                               wire:navigate>{{ __('Customer_Issue') }}</flux:navlist.item>
         </flux:navlist.group>
     </flux:navlist>
 
@@ -50,6 +54,10 @@
             <flux:navlist.item icon="users" :href="route('admin.customers')"
                                :current="request()->routeIs('admin.customers')"
                                wire:navigate>{{ __('Customers') }}</flux:navlist.item>
+
+            <flux:navlist.item icon="wrench" :href="route('admin.engineer')"
+                               :current="request()->routeIs('admin.engineer')"
+                               wire:navigate>{{ __('Engineer') }}</flux:navlist.item>
 
         </flux:navlist.group>
     </flux:navlist>
@@ -74,6 +82,15 @@
                                wire:navigate>{{ __('Home') }}</flux:navlist.item>
         </flux:navlist.group>
     </flux:navlist>
+
+    <flux:navlist variant="outline">
+        <flux:navlist.group :heading="__('Engineers Hub')" class="grid">
+            <flux:navlist.item icon="wrench" :href="route('admin.engineer_doc')" :current="request()->routeIs('admin.engineer_doc')"
+                               wire:navigate>{{ __('Engineer Documentation') }}</flux:navlist.item>
+        </flux:navlist.group>
+    </flux:navlist>
+
+
 
     <flux:spacer/>
 

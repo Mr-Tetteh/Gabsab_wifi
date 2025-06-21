@@ -19,6 +19,7 @@ class EnsureIsCustomer
         if (! Auth::check() || Auth::user()->role != 'admin' || Auth::user()->role != 'super_admin' || Auth::user()->role != 'customer') {
             return redirect('/');
         }
+
         return $next($request);
     }
 }
