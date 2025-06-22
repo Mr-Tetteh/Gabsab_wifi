@@ -20,7 +20,7 @@ class EngineerReport extends Component
 
     public $engineer_first_name;
 
-    public $engineer_details;
+    public $user_id;
 
     public $Edit;
     public $modal = false;
@@ -36,7 +36,7 @@ class EngineerReport extends Component
         $this->engineer_report = '';
         $this->engineer_solution = '';
         $this->engineer_first_name = '';
-        $this->engineer_details = '';
+        $this->user_id = '';
 
     }
 
@@ -61,7 +61,7 @@ class EngineerReport extends Component
         Customer_issue::find($this->edit_id)->update([
             'engineer_report' => $this->engineer_report,
             'engineer_solution' => $this->engineer_solution,
-            'engineer_details' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
         ]);
 
         $this->resetFrom();

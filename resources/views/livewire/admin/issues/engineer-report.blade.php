@@ -66,8 +66,8 @@
                             </td>
 
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
-                                @if($data->engineer_details)
-                                    {{$data->engineer_details}}
+                                @if($data->user_id)
+                                    {{$data->fix->first_name}} {{$data->fix->last_name}}
                                 @else
                                     <span
                                         class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
@@ -80,14 +80,9 @@
                                     wire:click="edit({{$data->id}})"
                                     class="text-blue-600 hover:text-blue-900 focus:outline-none"
                                 >
-                                    Edit
+                                    Upload Report
                                 </button>
-                                <button
-                                    wire:click="delete({{$data->id}})"
-                                    class="text-red-600 hover:text-red-900 focus:outline-none"
-                                >
-                                    Delete
-                                </button>
+
                             </td>
                         </tr>
                     @endforeach

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('engineer_solution')->nullable();
 
             $table->string('engineer_first_name')->nullable();
-            $table->string('engineer_details')->nullable();
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }
