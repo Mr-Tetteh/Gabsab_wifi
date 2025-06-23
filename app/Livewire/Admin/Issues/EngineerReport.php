@@ -76,7 +76,7 @@ class EngineerReport extends Component
     {
 
 
-        $datas = Customer_issue::where('engineer_first_name', Auth::user()->email)->get();
+        $datas = Customer_issue::where('engineer_first_name', Auth::user()->email)->latest()->paginate(10);
         return view('livewire.admin.issues.engineer-report', compact('datas'));
     }
 }

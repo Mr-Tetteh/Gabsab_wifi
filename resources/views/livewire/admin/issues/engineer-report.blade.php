@@ -27,6 +27,9 @@
                             Fixed By
                         </th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Created At
+                        </th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Actions
                         </th>
                     </tr>
@@ -75,6 +78,9 @@
                                     </span>
                                 @endif
                             </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                                {{$data->created_at->diffForHumans()}}
+                            </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500 space-x-5">
                                 <button
                                     wire:click="edit({{$data->id}})"
@@ -91,6 +97,7 @@
             </div>
         </div>
     </div>
+    {{$datas->links()}}
 
 
     @if($modal)
@@ -140,7 +147,7 @@
                                 <div>
                                     <label for="model" class="block text-sm font-medium text-gray-700 mb-1">Engineer's
                                         Report
-                                        </label>
+                                    </label>
                                     <textarea
                                         id="model"
                                         wire:model="engineer_report"
@@ -161,7 +168,7 @@
                                 <div>
                                     <label for="model" class="block text-sm font-medium text-gray-700 mb-1">Engineer's
                                         Solution
-                                        </label>
+                                    </label>
                                     <textarea
                                         id="model"
                                         wire:model="engineer_solution"

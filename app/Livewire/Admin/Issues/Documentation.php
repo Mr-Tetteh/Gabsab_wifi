@@ -54,7 +54,7 @@ class Documentation extends Component
     public function render()
     {
         $datas = Customer_issue::get();
-        $engineers = User::where('role', 'engineer')->get();
+        $engineers = User::where('role', 'engineer')->Orwhere('role', 'admin')->Orwhere('role', 'super_admin')->get();
 
         return view('livewire.admin.issues.documentation', compact('datas', 'engineers'));
     }
