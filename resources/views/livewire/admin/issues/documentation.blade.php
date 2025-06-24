@@ -103,8 +103,9 @@
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
                                 @if($data->engineer_report)
-                                    <span
+                                    <span>
                                     {{$data->engineer_report}}
+                                    </span>
                                 @else
                                     <span
                                         class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
@@ -124,8 +125,8 @@
                             </td>
 
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
-                                @if($data->engineer_details)
-                                    {{$data->engineer_details}}
+                                @if($data->user_id)
+                                    {{$data->fix->first_name}} {{$data->fix->last_name}}
                                 @else
                                     <span
                                         class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">

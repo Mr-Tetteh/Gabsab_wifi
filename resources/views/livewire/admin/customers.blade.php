@@ -114,7 +114,7 @@
                             </flux:select>
                             <div class="flex">
                                 <flux:spacer/>
-                                <flux:button type="submit" variant="primary">Save changes</flux:button>
+                                <Button type="submit"  class="p-2 rounded-2xl bg-black text-white">Save Changes</Button>
                             </div>
                         </div>
                     </form>

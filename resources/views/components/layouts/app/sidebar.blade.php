@@ -1,4 +1,4 @@
-@php use Illuminate\Support\Facades\Auth; @endphp
+@php use App\Models\Router;use Illuminate\Support\Facades\Auth; @endphp
     <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 <head>
@@ -29,48 +29,58 @@
     <br>
     @if(Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
 
-    <flux:navlist variant="outline">
-        <flux:navlist.group :heading="__('Platform')" class="grid">
-            <flux:navlist.item icon="home" :href="route('admin.dashboard')"
-                               :current="request()->routeIs('admin.dashboard')"
-                               wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-            <flux:navlist.item icon="wifi" :href="route('admin.router')" :current="request()->routeIs('admin.router')"
-                               wire:navigate>{{ __('Routers') }}</flux:navlist.item>
-            <flux:navlist.item icon="currency-dollar" :href="route('admin.price')"
-                               :current="request()->routeIs('admin.price')"
-                               wire:navigate>{{ __('Set Price') }}</flux:navlist.item>
+        <flux:navlist variant="outline">
+            <flux:navlist.group :heading="__('Platform')" class="grid">
+                <flux:navlist.item icon="home" :href="route('admin.dashboard')"
+                                   :current="request()->routeIs('admin.dashboard')"
+                                   wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                <flux:navlist.item icon="wifi" :href="route('admin.router')"
+                                   :current="request()->routeIs('admin.router')"
+                                   wire:navigate>{{ __('Routers') }}</flux:navlist.item>
+                <flux:navlist.item icon="currency-dollar" :href="route('admin.price')"
+                                   :current="request()->routeIs('admin.price')"
+                                   wire:navigate>{{ __('Set Price') }}</flux:navlist.item>
 
-            <flux:navlist.item icon="pencil" :href="route('admin.customer_issues')"
-                               :current="request()->routeIs('admin.customer_issues')"
-                               wire:navigate>{{ __('Customer_Issue') }}</flux:navlist.item>
-        </flux:navlist.group>
-    </flux:navlist>
+                <flux:navlist.item icon="pencil" :href="route('admin.customer_issues')"
+                                   :current="request()->routeIs('admin.customer_issues')"
+                                   wire:navigate>{{ __('Customer_Issue') }}</flux:navlist.item>
+            </flux:navlist.group>
+        </flux:navlist>
 
-    <flux:navlist variant="outline">
-        <flux:navlist.group :heading="__('Users')" class="grid">
-            <flux:navlist.item icon="user" :href="route('admin.users')" :current="request()->routeIs('admin.users')"
-                               wire:navigate>{{ __('Users') }}</flux:navlist.item>
+        <flux:navlist variant="outline">
+            <flux:navlist.group :heading="__('Users')" class="grid">
+                <flux:navlist.item icon="user" :href="route('admin.users')" :current="request()->routeIs('admin.users')"
+                                   wire:navigate>{{ __('Users') }}</flux:navlist.item>
 
-            <flux:navlist.item icon="users" :href="route('admin.customers')"
-                               :current="request()->routeIs('admin.customers')"
-                               wire:navigate>{{ __('Customers') }}</flux:navlist.item>
+                <flux:navlist.item icon="users" :href="route('admin.customers')"
+                                   :current="request()->routeIs('admin.customers')"
+                                   wire:navigate>{{ __('Customers') }}</flux:navlist.item>
 
-            <flux:navlist.item icon="wrench" :href="route('admin.engineer')"
-                               :current="request()->routeIs('admin.engineer')"
-                               wire:navigate>{{ __('Engineer') }}</flux:navlist.item>
+                <flux:navlist.item icon="wrench" :href="route('admin.engineer')"
+                                   :current="request()->routeIs('admin.engineer')"
+                                   wire:navigate>{{ __('Engineer') }}</flux:navlist.item>
 
-        </flux:navlist.group>
-    </flux:navlist>
+            </flux:navlist.group>
+        </flux:navlist>
     @endif
     <flux:navlist variant="outline">
         <flux:navlist.group :heading="__('Panel')" class="grid">
             <flux:navlist.item icon="home" :href="route('customer.dashboard')"
                                :current="request()->routeIs('customer.dashboard')"
                                wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-            <flux:navlist.item icon="wifi" :href="route('customer.routers')" :current="request()->routeIs('customer.routers')"
+            <flux:navlist.item icon="wifi" :href="route('customer.routers')"
+                               :current="request()->routeIs('customer.routers')"
                                wire:navigate>{{ __('Routers') }}</flux:navlist.item>
-            <flux:navlist.item icon="credit-card" :href="route('customer.subscriptions')" :current="request()->routeIs('customer.subscriptions')"
-                               wire:navigate>{{ __('Subscribe') }}</flux:navlist.item>
+
+
+            @if(Auth::user()->unique_id && \App\Models\Router::where('unique_id', Auth::user()->unique_id)->first())
+                <flux:navlist.item icon="credit-card" :href="route('customer.subscriptions')"
+                                   :current="request()->routeIs('customer.subscriptions')"
+                                   wire:navigate>{{ __('Subscribe') }}</flux:navlist.item>
+
+            @endif
+
+
 
         </flux:navlist.group>
     </flux:navlist>
@@ -83,17 +93,21 @@
         </flux:navlist.group>
     </flux:navlist>
 
-    <flux:navlist variant="outline">
-        <flux:navlist.group :heading="__('Engineers Hub')" class="grid">
-            <flux:navlist.item icon="wrench" :href="route('admin.engineer_doc')" :current="request()->routeIs('admin.engineer_doc')"
-                               wire:navigate>{{ __('Engineer Documentation') }}</flux:navlist.item>
 
-            <flux:navlist.item icon="wrench" :href="route('admin.documented_reports')" :current="request()->routeIs('admin.documented_reports')"
-                               wire:navigate>{{ __('Documented Reports') }}</flux:navlist.item>
+    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin' || Auth::user()->role == 'engineer')
+        <flux:navlist variant="outline">
+            <flux:navlist.group :heading="__('Engineers Hub')" class="grid">
+                <flux:navlist.item icon="wrench" :href="route('admin.engineer_doc')"
+                                   :current="request()->routeIs('admin.engineer_doc')"
+                                   wire:navigate>{{ __('Engineer Documentation') }}</flux:navlist.item>
 
-        </flux:navlist.group>
-    </flux:navlist>
+                <flux:navlist.item icon="wrench" :href="route('admin.documented_reports')"
+                                   :current="request()->routeIs('admin.documented_reports')"
+                                   wire:navigate>{{ __('Documented Reports') }}</flux:navlist.item>
 
+            </flux:navlist.group>
+        </flux:navlist>
+    @endif
 
 
     <flux:spacer/>
