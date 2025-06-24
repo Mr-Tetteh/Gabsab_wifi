@@ -51,6 +51,13 @@ class Documentation extends Component
 
     }
 
+    public function delete($id)
+    {
+        Customer_issue::findOrFail($id)->delete();
+        session()->flash('message', 'Complain deleted successfully');
+
+    }
+
     public function render()
     {
         $datas = Customer_issue::get();

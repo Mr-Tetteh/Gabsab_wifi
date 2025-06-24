@@ -135,12 +135,7 @@
                                 @endif
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500 space-x-5">
-                                <button
-                                    wire:click="edit({{$data->id}})"
-                                    class="text-blue-600 hover:text-blue-900 focus:outline-none"
-                                >
-                                    Edit
-                                </button>
+
                                 <button
                                     wire:click="delete({{$data->id}})"
                                     class="text-red-600 hover:text-red-900 focus:outline-none"

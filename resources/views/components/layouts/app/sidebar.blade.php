@@ -63,6 +63,24 @@
             </flux:navlist.group>
         </flux:navlist>
     @endif
+
+
+    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin' || Auth::user()->role == 'engineer')
+        <flux:navlist variant="outline">
+            <flux:navlist.group :heading="__('Engineers Hub')" class="grid">
+                <flux:navlist.item icon="pencil-square" :href="route('admin.engineer_doc')"
+                                   :current="request()->routeIs('admin.engineer_doc')"
+                                   wire:navigate>{{ __('Engineer Documentation') }}</flux:navlist.item>
+
+                <flux:navlist.item icon="document" :href="route('admin.documented_reports')"
+                                   :current="request()->routeIs('admin.documented_reports')"
+                                   wire:navigate>{{ __('Documented Reports') }}</flux:navlist.item>
+
+            </flux:navlist.group>
+        </flux:navlist>
+    @endif
+
+
     <flux:navlist variant="outline">
         <flux:navlist.group :heading="__('Panel')" class="grid">
             <flux:navlist.item icon="home" :href="route('customer.dashboard')"
@@ -80,10 +98,9 @@
 
             @endif
 
-
-
         </flux:navlist.group>
     </flux:navlist>
+
 
 
     <flux:navlist variant="outline">
@@ -94,20 +111,7 @@
     </flux:navlist>
 
 
-    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin' || Auth::user()->role == 'engineer')
-        <flux:navlist variant="outline">
-            <flux:navlist.group :heading="__('Engineers Hub')" class="grid">
-                <flux:navlist.item icon="wrench" :href="route('admin.engineer_doc')"
-                                   :current="request()->routeIs('admin.engineer_doc')"
-                                   wire:navigate>{{ __('Engineer Documentation') }}</flux:navlist.item>
 
-                <flux:navlist.item icon="wrench" :href="route('admin.documented_reports')"
-                                   :current="request()->routeIs('admin.documented_reports')"
-                                   wire:navigate>{{ __('Documented Reports') }}</flux:navlist.item>
-
-            </flux:navlist.group>
-        </flux:navlist>
-    @endif
 
 
     <flux:spacer/>
