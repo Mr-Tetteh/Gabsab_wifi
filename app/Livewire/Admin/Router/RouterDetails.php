@@ -18,6 +18,7 @@ class RouterDetails extends Component
     public $antenna_number;
 
     public $status;
+    public $organization;
 
     public $created_at;
 
@@ -37,6 +38,7 @@ class RouterDetails extends Component
         $this->status = '';
         $this->model = '';
         $this->unique_id = '';
+        $this->organization = '';
     }
 
     protected $rules = [
@@ -55,6 +57,7 @@ class RouterDetails extends Component
         $this->antenna_number = $router->antenna_number;
         $this->model = $router->model;
         $this->status = $router->status;
+        $this->organization = $router->organization;
         $this->Edit = true;
         $this->unique_id = $router->unique_id;
     }
@@ -71,6 +74,7 @@ class RouterDetails extends Component
         $this->status = $router->status;
         $this->created_at = $router->created_at;
         $this->unique_id = $router->unique_id;
+        $this->serial_number = $router->organization;
     }
 
     public function closeModal()
@@ -86,6 +90,7 @@ class RouterDetails extends Component
             'serial_number' => $this->serial_number,
             'antenna_number' => $this->antenna_number,
             'model' => $this->model,
+            'organization' => $this->organization,
             'status' => $this->status,
             'unique_id' => $this->unique_id,
         ]);

@@ -13,6 +13,7 @@ class Router extends Model
         'serial_number',
         'antenna_number',
         'status',
+        'organization',
         'unique_id',
     ];
 

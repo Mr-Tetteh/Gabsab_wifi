@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('antenna_number');
             $table->string('serial_number');
             $table->string('model');
+            $table->string('organization')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
