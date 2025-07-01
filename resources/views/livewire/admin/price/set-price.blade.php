@@ -65,6 +65,32 @@
                         @enderror
                     </div>
 
+                    <div>
+                        <label for="serial_number" class="block text-sm font-medium text-gray-700 mb-1">Set Price For
+                        </label>
+                        <select
+                            id="serial_number"
+                            wire:model="price_belongs_to"
+                            type="text"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+
+                        >
+                            <option selected disabled>Select and option</option>
+                            <option value="Residential">Residential</option>
+                            <option value="SME">SME</option>
+                            <option value="Church">Church</option>
+                            <option value="Event">Events</option>
+
+                        </select>
+                        @error('price_belongs_to')
+                        <div class="text-red-600">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+
+
+
 
                     <div>
                         <label for="antenna_number" class="block text-sm font-medium text-gray-700 mb-1">Advantage 1
@@ -178,6 +204,9 @@
                             <th class="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                                 Quantity
                             </th>
+                            <th class="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                Price Belongs To
+                            </th>
 
                             <th class="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                                 Advantage 1
@@ -220,8 +249,9 @@
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
                                     {{$data->quantity}}
                                 </td>
-
-
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                                    {{$data->price_belongs_to}}
+                                </td>
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
                                     {{$data->adv_1}}
                                 </td>

@@ -12,6 +12,7 @@ class SetPrice extends Component
     public $price;
 
     public $quantity;
+    public $price_belongs_to;
 
     public $adv_1;
 
@@ -33,6 +34,7 @@ class SetPrice extends Component
         'name' => 'required|string|max:255',
         'price' => 'required|numeric|min:0',
         'quantity' => 'required|string|min:0',
+        'price_belongs_to' => 'required|string',
         'adv_1' => 'nullable|string|max:255',
         'adv_2' => 'nullable|string|max:255',
         'adv_3' => 'nullable|string|max:255',
@@ -45,6 +47,7 @@ class SetPrice extends Component
         $this->name = '';
         $this->price = '';
         $this->quantity = '';
+        $this->price_belongs_to = '';
         $this->adv_1 = '';
         $this->adv_2 = '';
         $this->adv_3 = '';
@@ -59,6 +62,7 @@ class SetPrice extends Component
             'name' => $this->name,
             'price' => $this->price,
             'quantity' => $this->quantity,
+            'price_belongs_to' => $this->price_belongs_to,
             'adv_1' => $this->adv_1,
             'adv_2' => $this->adv_2,
             'adv_3' => $this->adv_3,
@@ -77,6 +81,7 @@ class SetPrice extends Component
         $this->name = $price->name;
         $this->price = $price->price;
         $this->quantity = $price->quantity;
+        $this->price_belongs_to = $price->price_belongs_to;
         $this->adv_1 = $price->adv_1;
         $this->adv_2 = $price->adv_2;
         $this->adv_3 = $price->adv_3;
@@ -92,6 +97,7 @@ class SetPrice extends Component
             'name' => $this->name,
             'price' => $this->price,
             'quantity' => $this->quantity,
+            'price_belongs_to' => $this->price_belongs_to,
             'adv_1' => $this->adv_1,
             'adv_2' => $this->adv_2,
             'adv_3' => $this->adv_3,
